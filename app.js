@@ -24,7 +24,18 @@ app.use(sassMiddleware({
     indentedSyntax: true, // true = .sass and false = .scss
     sourceMap: true
 }));
+
+// static routes
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/stylesheets/bootstrap.css', function (req, res) {
+    res.sendFile(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.css');
+});
+app.get('/scripts/bootstrap.js', function (req, res) {
+    res.sendFile(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.js');
+});
+app.get('/stylesheets/fontawesome.css', function (req, res) {
+    res.sendFile(__dirname + '/node_modules/Font-Awesome/css/all.css');
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

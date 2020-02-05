@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const ctrlMain = require('../controllers/main');
+
 /* GET home page. */
-// noinspection JSUnusedLocalSymbols
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Home'});
-});
+// noinspection JSUnresolvedFunction
+router.get('/', ctrlMain.index);
 
 module.exports = router;
