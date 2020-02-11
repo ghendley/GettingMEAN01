@@ -36,6 +36,14 @@ app.get('/scripts/bootstrap.js', function (req, res) {
 app.get('/stylesheets/fontawesome.css', function (req, res) {
     res.sendFile(__dirname + '/node_modules/Font-Awesome/css/all.css');
 });
+app.get('/scripts/fontawesome.js', function (req, res) {
+    res.sendFile(__dirname + '/node_modules/Font-Awesome/js/all.js');
+});
+// TODO surely this isn't ideal
+app.get('/webfonts/:file', function (req, res) {
+    let file = req.params.file;
+    res.sendFile(__dirname + '/node_modules/Font-Awesome/webfonts/' + file);
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
