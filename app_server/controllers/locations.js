@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 /* GET 'home' page */
 const homeList = (req, res) => {
     res.render('locations-list', {
@@ -31,7 +33,10 @@ const homeList = (req, res) => {
 
 /* GET 'Location info' page */
 const locationInfo = (req, res) => {
-    res.render('location-info', {title: 'Location info'});
+    res.render('location-info', {
+        title: 'Location info',
+        mapApiKey: process.env.GOOGLE_MAPS_API_KEY
+    });
 };
 
 /* GET 'Add review' page */
