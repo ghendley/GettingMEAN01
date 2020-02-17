@@ -1,5 +1,7 @@
 extends layout
 
+include _includes/sharedHtmlFunctions
+
 block content
     .row.banner
         .col-12
@@ -7,52 +9,16 @@ block content
                 small &nbsp;#{pageHeader.strapline}
     .row
         .col-12.col-md-8
-            .card
-                .card-block
-                    h4
-                        a(href="/location") Starcups
-                        small &nbsp;
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.far.fa-star
-                            i.far.fa-star
-                        span.badge.badge-pill.badge-default.float-right 100m
-                    p.address 125 High Street, Reading, RG6 1PS
-                    .facilities
-                        span.badge.badge-warning Hot drinks
-                        span.badge.badge-warning Food
-                        span.badge.badge-warning Premium wifi
-            .card
-                .card-block
-                    h4
-                        a(href="/location") Cafe Hero
-                        small &nbsp;
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.far.fa-star
-                            i.far.fa-star
-                            i.far.fa-star
-                        span.badge.badge-pill.badge-default.float-right 200m
-                    p.address 333 Low Road, Reading, RG6 1PS
-                    .facilities
-                        span.badge.badge-warning Hot drinks
-                        span.badge.badge-warning Food
-                        span.badge.badge-warning Premium wifi
-            .card
-                .card-block
-                    h4
-                        a(href="/location") Burger Queen
-                        small &nbsp;
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.fas.fa-star
-                            i.fas.fa-star
-                        span.badge.badge-pill.badge-default.float-right 500m
-                    p.address 6895 Wheat Street, Reading, RG6 1PS
-                    .facilities
-                        span.badge.badge-warning Food
-                        span.badge.badge-warning Premium wifi
+            each location in locations
+                .card
+                    .card-block
+                        h4
+                            a(href="/location")= location.name
+                            +outputRating(location.rating)
+                            span.badge.badge-pill.badge-default.float-right= location.distance
+                        p.address= location.address
+                        .facilities
+                            each facility in location.facilities
+                                span.badge.badge-warning= facility
         .col-12.col-md-4
-            p.lead Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake, or a pint? Let Loc8r help you din the place you're looking for.
+            p.lead= sidebar
