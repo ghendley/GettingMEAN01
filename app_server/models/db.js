@@ -1,8 +1,6 @@
 require('dotenv').config();
 
 const mongoose = require('mongoose');
-const readline = require('readline');
-
 const dbUri = process.env.GETTING_MEAN_MONGO_URI;
 
 mongoose.connect(dbUri, {useNewUrlParser: true});
@@ -24,6 +22,7 @@ const gracefulShutdown = (msg, callback) => {
     });
 };
 
+const readline = require('readline');
 // Force emission of SIGINT in Windows termination
 // Not currently using Windows, but who knows
 if (process.platform === 'win32') {
@@ -58,3 +57,5 @@ process.on('SIGTERM', () => {
         process.exit(0);
     });
 });
+
+require('./location');
