@@ -58,4 +58,4 @@ process.on('SIGTERM', () => {
     });
 });
 
-require('./location');
+require('./locations');

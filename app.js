@@ -30,16 +30,22 @@ app.use(sassMiddleware({
 // static routes
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/stylesheets/bootstrap.css', function (req, res) {
-    res.sendFile(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.css');
+    res.sendFile(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.min.css');
+});
+app.get('/stylesheets/bootstrap.min.css.map', function (req, res) {
+    res.sendFile(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.min.css.map');
 });
 app.get('/scripts/bootstrap.js', function (req, res) {
-    res.sendFile(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.js');
+    res.sendFile(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.min.js');
 });
 app.get('/stylesheets/fontawesome.css', function (req, res) {
-    res.sendFile(__dirname + '/node_modules/Font-Awesome/css/all.css');
+    res.sendFile(__dirname + '/node_modules/Font-Awesome/css/all.min.css');
 });
 app.get('/scripts/fontawesome.js', function (req, res) {
-    res.sendFile(__dirname + '/node_modules/Font-Awesome/js/all.js');
+    res.sendFile(__dirname + '/node_modules/Font-Awesome/js/all.min.js');
+});
+app.get('/favicon.ico', function (req, res) {
+    res.sendFile(__dirname + '/public/images/favicon/favicon.ico');
 });
 // TODO surely this isn't ideal
 app.get('/webfonts/:file', function (req, res) {
