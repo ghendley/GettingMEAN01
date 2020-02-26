@@ -6,15 +6,19 @@ block content
     .row.banner
         .col-12
             h1= pageHeader.title
+                // TODO reformatter wants to decrease the indentation here, and I cannot find a way to override it
                 small &nbsp;#{pageHeader.strapline}
     .row
         .col-12.col-md-8
+            .error= message
+
             each location in locations
                 .card
                     .card-block
                         h4
-                            a(href='/location')= location.name
-                            +outputRating(location.rating)
+                            a(href=`/location/${location._id}`)= location.name
+                            small &nbsp;
+                                +outputRating(location.rating)
                             span.badge.badge-pill.badge-default.float-right= location.distance
                         p.address= location.address
                         .facilities
