@@ -35,7 +35,7 @@ const locationsListByDistance = async (req, res) => {
 
         const locations = results.map(result => {
             return {
-                id: result._id,
+                _id: result._id,
                 name: result.name,
                 address: result.address,
                 rating: result.rating,

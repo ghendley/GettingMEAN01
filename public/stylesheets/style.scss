@@ -50,6 +50,12 @@ h1, h2, h3, h4, h5, h6, legend {
   padding-bottom: 0.5em;
 }
 
+// I added this because the spacing from the book's screenshots wasn't present
+.reviewAuthor {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .review-header {
   background-color: #31727a;
   padding-top: 0.5em;

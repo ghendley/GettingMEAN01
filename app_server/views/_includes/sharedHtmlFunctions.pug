@@ -1,3 +1,8 @@
+mixin formatDate(dateString)
+    - const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; // gross
+    - const date = new Date(dateString);
+    =`${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
+
 mixin outputRating(rating)
     - for (let i = 1; i <= rating; i++)
         i.fas.fa-star
