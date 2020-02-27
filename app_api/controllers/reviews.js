@@ -39,6 +39,7 @@ const addReview = (req, res, location) => {
     location.reviews.push({author, rating, reviewText});
     location.save((err, location) => {
         if (err) {
+            console.log(err);
             return res.status(400).json(err);
         }
         updateAverageRating(location._id);
