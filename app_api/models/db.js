@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const dbUri = process.env.GETTING_MEAN_MONGO_URI;
 
-mongoose.connect(dbUri, {useNewUrlParser: true});
+mongoose.connect(dbUri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${dbUri}.`);
