@@ -10,6 +10,7 @@
     "yarn": ">=1.21.1"
   },
   "dependencies": {
+    "@angular/cli": "^9.0.5",
     "Font-Awesome": "FortAwesome/Font-Awesome",
     "bootstrap": "^4.4.1",
     "cookie-parser": "~1.4.4",
