@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "build": "concurrently \"yarn build-css\" \"ng build\"",
     "start": "ng serve --host 0.0.0.0",
-    "build": "ng build",
+    "build-css": "node-sass src -o src",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -21,6 +22,7 @@
     "@angular/router": "~9.0.5",
     "Font-Awesome": "FortAwesome/Font-Awesome",
     "bootstrap": "^4.4.1",
+    "node-sass": "^4.13.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
