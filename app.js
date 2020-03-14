@@ -29,6 +29,8 @@ app.use(sassMiddleware({
 
 // static routes
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app_public')));
+
 app.get('/stylesheets/bootstrap.css', function (req, res) {
     res.sendFile(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.min.css');
 });
@@ -51,6 +53,12 @@ app.get('/favicon.ico', function (req, res) {
 app.get('/webfonts/:file', function (req, res) {
     let file = req.params.file;
     res.sendFile(__dirname + '/node_modules/Font-Awesome/webfonts/' + file);
+});
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
 });
 
 app.use('/', indexRouter);

@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "build": "yarn install && concurrently \"yarn build-css\" \"yarn install-build-angular\"",
-    "start": "concurrently \"yarn run-node\" \"yarn run-angular\"",
+    "start": "node ./bin/www",
+    "start-dev": "concurrently \"yarn start\" \"yarn start-angular\"",
     "build-css": "node-sass public -o public",
     "install-build-node": "yarn install && yarn build-css",
     "install-build-angular": "cd app_public && yarn install && yarn build",
-    "run-node": "node ./bin/www",
-    "run-angular": "cd app_public && yarn start"
+    "start-angular": "cd app_public && yarn start"
   },
   "engines": {
     "node": ">=13.7.0",
