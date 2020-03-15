@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Everything" type="CompoundRunConfigurationType">
+    <toRun name="angular JavaScript" type="JavascriptDebugType" />
+    <toRun name="angular start" type="js.build_tools.npm" />
+    <toRun name="bin/www JavaScript" type="JavascriptDebugType" />
+    <toRun name="bin/www" type="NodeJSConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

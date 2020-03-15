@@ -40,6 +40,9 @@ app.get('/stylesheets/bootstrap.min.css.map', function (req, res) {
 app.get('/scripts/bootstrap.js', function (req, res) {
     res.sendFile(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.min.js');
 });
+app.get('/scripts/bootstrap.min.js.map', function (req, res) {
+    res.sendFile(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.min.js.map');
+});
 app.get('/stylesheets/fontawesome.css', function (req, res) {
     res.sendFile(__dirname + '/node_modules/Font-Awesome/css/all.min.css');
 });
@@ -56,7 +59,7 @@ app.get('/webfonts/:file', function (req, res) {
 });
 
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.header('Access-Control-Allow-Origin', '*'); // TODO This is dangerous; fix CORS policy
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });

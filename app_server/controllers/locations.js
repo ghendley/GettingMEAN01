@@ -1,73 +1,17 @@
 require('dotenv').config();
 
 const request = require('request');
-const apiUri = process.env.API_URI;
 
-const formatDistance = (distance) => {
-    let thisDistance;
-    let unit = 'm';
-
-    if (distance > 1000) {
-        thisDistance = parseFloat(distance / 1000).toFixed(1);
-        unit = 'km';
-    } else {
-        thisDistance = Math.floor(distance);
-    }
-    return thisDistance + ' ' + unit;
-};
-
-const renderHomepage = (req, res, responseBody) => {
-    let message = null;
-
-    if (!(responseBody instanceof Array)) {
-        message = 'API lookup error';
-        responseBody = [];
-    } else if (!responseBody.length) {
-        message = 'No places found nearby';
-    }
-
+/* GET 'home' page */
+const homeList = (req, res) => {
     res.render('locations-list', {
         title: 'Loc8r - find a place to work with wifi',
         pageHeader: {
             title: 'Loc8r',
             strapline: 'Find places to work with wifi near you!'
         },
-        sidebar: 'Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake, or a pint? Let Loc8r help you find the place you\'re looking for.',
-        locations: responseBody,
-        message
+        sidebar: 'Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake, or a pint? Let Loc8r help you find the place you\'re looking for.'
     });
-};
-
-/* GET 'home' page */
-const homeList = (req, res) => {
-    const path = 'locations';
-    const requestOptions = {
-        url: `${apiUri}/${path}`,
-        method: 'GET',
-        json: {},
-        qs: {
-            lng: -96.290120,
-            lat: 30.647050,
-            maxkm: 20
-        }
-    };
-
-    request(
-        requestOptions,
-        (err, {statusCode}, body) => {
-            // should submit a pull request; the authors need this rather than [] for error messages to work as described
-            let data = null; //[];
-
-            if (statusCode === 200) {
-                data = body.map((item) => {
-                    item.distance = formatDistance(item.distance);
-                    return item;
-                });
-            }
-
-            renderHomepage(req, res, data);
-        }
-    );
 };
 
 const renderDetailPage = (req, res, location) => {
